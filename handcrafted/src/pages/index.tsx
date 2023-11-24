@@ -1,15 +1,16 @@
-import Layout from '../layouts/Main';
-import Home from '../components/intro-page';
-import Footer from '../components/footer';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import Layout from '@/components/Layout';
+import Hero from '@/components/Hero';
+import FeaturedArtisans from '@/components/FeaturedArtisans';
+import Testimonials from '@/components/Testimonials';
 
-const IndexPage = () => {
-  return (
-    <Layout>
-      <Home />
-      <Footer />
-    </Layout>
-  )
+export default function HomePage() {
+    return (
+        <Layout>
+            <Hero />
+            <FeaturedArtisans />
+            <Testimonials />
+        </Layout>
+            
+    )
 }
-
-
-export default IndexPage
