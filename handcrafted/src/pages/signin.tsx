@@ -99,7 +99,11 @@ const LoginPage = () => {
                 <button type="button" className="btn-social google-btn">
                   <Image src="/images/facebook.png" alt="gmail" 
                   width={50}
-                  height={50}/> Gmail</button>
+                  height={50}
+                  className='  
+                  display: block;
+                  margin-left: auto;
+                  margin-right: auto;'/> Gmail</button>
               </div>
 
               <button type="submit" className="text-black py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">Sign in</button>
