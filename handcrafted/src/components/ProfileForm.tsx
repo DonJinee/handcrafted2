@@ -35,7 +35,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ onSubmit }) => {
         <>
         <div className="relative top-40">
         <h2 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl mb-4">Update your profile</h2>
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto mb-4 ">
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto mb-4 p-8 ">
             <div className="mb-4">
                 <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">
                     Name:
