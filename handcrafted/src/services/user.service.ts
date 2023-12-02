@@ -34,7 +34,6 @@ export const userService = {
 
 async function login(email: string, password: string): Promise<void> {
   const user: User = await fetchWrapper.post(`${baseUrl}/users/authenticate`, { email, password });
-  updateLocalStorageAndPublish(user);
 }
 
 function logout(): void {
