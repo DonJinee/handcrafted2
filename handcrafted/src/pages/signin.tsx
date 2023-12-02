@@ -106,10 +106,13 @@ const LoginPage: React.FC = () => {
                                 <Link href="/forgot-password" className="form__info__forgot-password">Forgot password?</Link>
                             </div>
 
-                            <div className="form__btns">
-                                <button type="button" className="btn-social fb-btn"><i className="icon-facebook"></i>Facebook</button>
-                                <button type="button" className="btn-social google-btn"><img src="#" alt="gmail" /> Gmail</button>
-                            </div>
+              <div className="form__btns">
+                <button type="button" className="btn-social fb-btn"><i className="icon-facebook"></i>Facebook</button>
+                <button type="button" className="btn-social google-btn">
+                  <Image src="/images/facebook.png" alt="gmail" 
+                  width={50}
+                  height={50}/> Gmail</button>
+              </div>
 
                             <button type="submit" onClick={handleSubmit(onSubmit)} className="text-black py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">Sign in</button>
 
