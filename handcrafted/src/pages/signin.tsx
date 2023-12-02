@@ -114,7 +114,9 @@ const LoginPage: React.FC = () => {
                   height={50}/> Gmail</button>
               </div>
 
-                            <button type="submit" onClick={handleSubmit(onSubmit)} className="text-black py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">Sign in</button>
+                            <button type="submit" disabled={formState.isSubmitting}  onClick={handleSubmit(onSubmit)} className="text-black py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                            {formState.isSubmitting && <span className="spinner-border spinner-border-sm me-1"></span>}
+                                Sign in</button>
 
                             <p className="form__signup-link">Not a member yet? <Link href="/register">Sign up</Link></p>
                         </form>
