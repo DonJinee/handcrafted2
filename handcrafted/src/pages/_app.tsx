@@ -16,22 +16,6 @@ export default function App({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState<User | null>(null);
   const [authorized, setAuthorized] = useState(false);
 
-  const authCheck = useCallback((url: string) => {
-    // redirect to login page if accessing a private page and not logged in 
-    setUser(userService.userValue);
-    const publicPaths = ['/signin', '/register'];
-    const path = url.split('?')[0];
-    if (!userService.userValue && !publicPaths.includes(path)) {
-      setAuthorized(false);
-      router.push({
-        pathname: '/signin',
-        query: { returnUrl: router.asPath }
-      });
-    } else {
-      setAuthorized(true);
-    }
-  }, [router]);
-
   useEffect(() => {
     // on initial load - run auth check 
     authCheck(router.asPath);
@@ -41,14 +25,33 @@ export default function App({ Component, pageProps }: AppProps) {
     router.events.on('routeChangeStart', hideContent);
 
     // on route change complete - run auth check 
-    router.events.on('routeChangeComplete', () => authCheck(router.asPath));
+    router.events.on('routeChangeComplete', authCheck)
 
     // unsubscribe from events in useEffect return function
     return () => {
-      router.events.off('routeChangeStart', hideContent);
-      router.events.off('routeChangeComplete', () => authCheck(router.asPath));
-    };
-  }, [authCheck, router]);
+        router.events.off('routeChangeStart', hideContent);
+        router.events.off('routeChangeComplete', authCheck);
+    }
+}, []);
+
+  function authCheck(url: string) {
+    // redirect to login page if accessing a private page and not logged in 
+    setUser(userService.userValue);
+    const publicPaths = ['/signin', '/register', '/'];
+    const path = url.split('?')[0];
+    if (!userService.userValue && !publicPaths.includes(path)) {
+        setAuthorized(false);
+        router.push({
+            pathname: '/signin',
+            query: { returnUrl: router.asPath }
+        });
+    } else {
+        setAuthorized(true);
+    }
+}
+
+  // Make sure to use useCallback for memoization
+const hideContent = useCallback(() => setAuthorized(false), []);
 
   return (
     <Fragment>

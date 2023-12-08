@@ -37,6 +37,7 @@ const LoginPage: React.FC = () => {
                 ? router.query.returnUrl[0]
                 : router.query.returnUrl || '/';
             router.push(returnUrl);
+            console.log(returnUrl);
         } catch (error) {
             alertService.error((error as Error).message || 'An unknown error occurred');        }
     };
